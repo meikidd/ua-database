@@ -7,7 +7,7 @@ $('#submit-btn').click(function(e) {
   if(browser && version && os && device) {
     $('#loading').show();
     $('#submit-btn').hide();
-    
+
     $.ajax({
       url: '/record',
       data: {
@@ -18,6 +18,7 @@ $('#submit-btn').click(function(e) {
       },
       success: function(data) {
         $('#loading').hide();
+        $('#alert-success').removeClass('hide');
       }
     })
   }

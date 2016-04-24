@@ -42,7 +42,7 @@ app.use(function *(next) {
   if(find) {
     find = uaObject;
   } else {
-    uaData.push(uaObject);
+    uaData.unshift(uaObject);
   }
   fs.writeFileSync(UA_FILE_PATH, JSON.stringify(uaData, null, '  '));
 
