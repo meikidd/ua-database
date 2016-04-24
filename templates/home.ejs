@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="apple-touch-fullscreen" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+  <title>Collect UserAgent Strings</title>
+  <link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+  <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+ 
+  <style type="text/css">
+  .ua-string {
+    font-size: 18px;
+    margin: 10px 0 40px;
+  }
+  </style>
+</head>
+<body class="container">
+<div class="row">
+  <div class="ua-string col-sm-12">
+    UA: <%=ua %>
+  </div>
+  <div class="col-sm-12">
+    <div class="form-horizontal">
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Browser:</label>
+        <div class="col-sm-10">
+          <select class="form-control" id="browser-slt">
+            <option value="">...</option>
+            <option value="safari">Safari</option>
+            <option value="chrome">Chrome</option>
+            <option value="opera">Opera</option>
+            <option value="firefox">Firefox</option>
+            <option value="ie">IE</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Browser Major Version:</label>
+        <div class="col-sm-10">
+          <input type="number" class="form-control" id="version-ipt" placeholder="major version" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Device:</label>
+        <div class="col-sm-10">
+          <select class="form-control" id="device-slt">
+            <option value="">...</option>
+            <option value="pc">PC</option>
+            <option value="pad">PAD</option>
+            <option value="phone">PHONE</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">OS:</label>
+        <div class="col-sm-10">
+          <select class="form-control" id="os-slt">
+            <option value="">...</option>
+            <option value="win">Windows</option>
+            <option value="mac">Mac OS</option>
+            <option value="ios">IOS</option>
+            <option value="android">Android</option>
+            <option value="linux">Linux</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <button id="submit-btn" class="btn btn-primary">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="/js/home.js"></script>
+
+</body>
+</html>
