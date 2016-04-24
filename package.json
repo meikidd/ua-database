@@ -1,0 +1,21 @@
+{
+  "name": "useragent",
+  "version": "1.0.0",
+  "description": "collect useragent",
+  "main": "app.js",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git.sinacloud.com/useragent"
+  },
+  "keywords": [
+    "useragent",
+    "ua"
+  ],
+  "author": "meikidd",
+  "license": "ISC",
+  "dependencies": {
+    "koa": "~1.2.0"
+  }
+}
