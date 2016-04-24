@@ -2,6 +2,7 @@ var fs = require('fs');
 var koa = require('koa');
 var view = require('koa-views');
 var static = require('koa-static');
+var UA_FILE_PATH = __dirname+'/data/ua.json';
 
 var app = koa();
 app.use(static(__dirname+'/htdocs'));
@@ -15,9 +16,6 @@ app.use(function *(next) {
   yield this.render('home.ejs', { ua });
 });
 
-// clear ua.json file
-
-
 // record ua object
 app.use(function *(next) {
   if(this.path !== '/record') return yield next;
@@ -25,13 +23,18 @@ app.use(function *(next) {
   var ua = this.headers['user-agent'];
   var uaObject = {
     ua: ua,
-    browser: this.query.browser, 
-    version: this.query.version, 
-    os: this.query.os, 
-    device: this.query.device
+    browser: {
+      name: this.query.browser, 
+      version: this.query.version
+    },
+    os: { 
+      name: this.query.os
+    },
+    device: {
+      name: this.query.device
+    }
   }
-  var filePath = __dirname+'/data/ua.json';
-  var uaData = JSON.parse(fs.readFileSync(filePath));
+  var uaData = JSON.parse(fs.readFileSync(UA_FILE_PATH));
   var find = uaData.find(function(obj) {
     if(obj.ua === ua) return true;
     return false;
@@ -41,10 +44,19 @@ app.use(function *(next) {
   } else {
     uaData.push(uaObject);
   }
-  fs.writeFileSync(filePath, JSON.stringify(uaData, null, '  '));
+  fs.writeFileSync(UA_FILE_PATH, JSON.stringify(uaData, null, '  '));
 
   this.body = JSON.stringify(uaData);
 });
+
+// get ua data
+app.use(function *(next) {
+  if(this.path !== '/list') return yield next;
+
+  this.body = '' + fs.readFileSync(UA_FILE_PATH);
+});
+
+// clear ua.json file
 
 // listen
 app.listen(process.env.PORT || 7001, function() {
