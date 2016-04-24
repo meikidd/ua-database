@@ -6,6 +6,6 @@ app.use(function *() {
   this.body = 'hello world';
 })
 
-app.listen(80, function() {
+app.listen(process.env.PORT, function() {
   console.log('server started on:80');
 });
