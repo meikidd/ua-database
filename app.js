@@ -6,6 +6,6 @@ app.use(function *() {
   this.body = 'hello world';
 })
 
-app.listen(7001, function() {
+app.listen(80, function() {
   console.log('server started on:80');
 });
